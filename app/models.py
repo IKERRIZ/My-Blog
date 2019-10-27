@@ -1,10 +1,11 @@
-from . import db
+class Quote:
+    '''
+    Quote class to define the quotes objects
+    
+    '''
 
-
-class User(db.Model):
-    __tablename__ = 'users'
-    id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255))
-
-    def __repr__(self):
-        return f'User {self.username}'
+    def __init__(self,id,author,quote,quote_link):
+        self.id = id
+        self.author = author
+        self.quote = quote
+        self.quote_link = "http://quotes.stormconsultancy.co.uk/quotes/25" 
