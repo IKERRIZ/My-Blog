@@ -2,17 +2,17 @@
 {% block content %}
 <div class="container">
     <div style="margin-top:100px;">
-         <h1 class="text-center">~ Ikerriz Blog~</h1>
+         <h1 class="text-center head">~ Ikerriz Blog~</h1>
         </div>
-    </div>
+    
     <div class=" text-center intro">
         <p>Welcome to Ikerriz Blog a place where you can read, post and comment on any blog of your choice</p>
 
     </div>
     <div class="quote text-center">
-        <h3>Best quote</h3>
-        <p>{{ quote.quote }}</p>
-        <p>{{ quote.author }}</p>
+        <h3 class="best">Best quote</h3>
+        <p class="quot">{{ quote.quote }}</p>
+        <p class="put">{{ quote.author }}</p>
     </div>
 
 
@@ -22,3 +22,4 @@
 
 </div>
 {% endblock %} 
+</div>
