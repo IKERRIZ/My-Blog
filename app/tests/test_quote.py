@@ -13,7 +13,7 @@ class QuoteTest(unittest.TestCase):
         Set up method that will run before every
         
         '''
-        self.new_quote = Quote(19, 'jane', 'amazing deeds are just but gifts', 'https://quotemake.com')
+        self.new_quote = Quote('jane', 'amazing deeds are just but gifts')
 
 
     def test_instance(self):
