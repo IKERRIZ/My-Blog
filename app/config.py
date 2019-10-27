@@ -9,6 +9,9 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
+    @staticmethod
+    def init_app(app):
+        pass
 class ProdConfig(Config):
     '''
     Production  configuration child class
@@ -29,3 +32,7 @@ class DevConfig(Config):
 
     DEBUG = True
 
+config_options = {
+    'development':DevConfig,
+    'production': ProdConfig
+}
