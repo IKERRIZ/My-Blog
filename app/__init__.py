@@ -3,13 +3,14 @@ from flask_bootstrap import Bootstrap
 from config import config_options, DevConfig
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_wtf.csrf import CSRFProtect
 
 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 
-
+csrf = CSRFProtect()
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 
@@ -22,11 +23,14 @@ def create_app(config_name):
 
     # Setting app configurations
     app.config.from_object(DevConfig)
+    app.config['SECRET_KEY'] ='faithikerriz'
+    app.config['WTF_CSRF_SECRET_KEY'] = 'faithikerriz'
 
     # initializing flask extensions
     bootstrap.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
+    csrf.init_app(app)
 
     #registering the main app blueprint
     from .main import main as main_blueprint
