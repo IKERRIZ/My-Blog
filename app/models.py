@@ -74,8 +74,8 @@ class BlogCategory(db.Model):
 
     @classmethod
     def get_categories(cls):
-        categories = BlogCategory.query.all()
-        return categories
+        category = BlogCategory.query.all()
+        return category
 
 
 # blogs class

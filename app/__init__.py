@@ -1,18 +1,17 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
-from config import config_options, DevConfig
+from config import config_options
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-from flask_wtf.csrf import CSRFProtect
-
+from flask_uploads import UploadSet,configure_uploads,IMAGES
+from flask_mail import Mail
 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
-
-csrf = CSRFProtect()
 bootstrap = Bootstrap()
 db = SQLAlchemy()
+mail = Mail()
 
 def create_app(config_name):
 
@@ -22,23 +21,21 @@ def create_app(config_name):
     app.config.from_object(config_options[config_name]) 
 
     # Setting app configurations
-    app.config.from_object(DevConfig)
     app.config['SECRET_KEY'] ='faithikerriz'
-    app.config['WTF_CSRF_SECRET_KEY'] = 'faithikerriz'
 
     # initializing flask extensions
     bootstrap.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
-    csrf.init_app(app)
+    mail.init_app(app)
 
     #registering the main app blueprint
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
     # registering the auth blueprint
-    from .auth import auth as main_bluprint
-    app.register_blueprint(main_bluprint, url_prefix = '/auth')
+    from .auth import auth as main_blueprint
+    app.register_blueprint(main_blueprint, url_prefix = '/authenticate')
 
 
     return app

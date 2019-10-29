@@ -2,7 +2,7 @@
 from app import create_app,db
 from  flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager, Server
-from app.models import User,Comments,Blog,Upvote,Downvote,BlogCategory, Quote
+from app.models import User,Comments,Blog,UpVote,DownVote,BlogCategory, Quote
 
 
 

@@ -3,18 +3,18 @@ from . import main
 from flask_login import login_required, current_user
 from .forms import ReviewForm,CategoryForm,CommentForm,BlogForm
 from ..models import BlogCategory,Blog,Comments,UpVote,DownVote
-from ..request import get_quote
+from ..requests import get_quote
 
 
 @main.route('/')
 def index():
     """ View root page function that returns index page """
 
-    category = BlogCategory.get_categories()
+    categories = BlogCategory.get_categories()
     quote = get_quote()
 
     title = 'Home- Welcome to Ikerriz Blog'
-    return render_template('index.html', title = title, categories=category, quote=quote)
+    return render_template('index.html', title = title, categories=categories, quote=quote)
 
 
 
