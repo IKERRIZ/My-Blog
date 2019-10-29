@@ -1,16 +1,25 @@
-{% extends 'base.html'%} {% import 'bootstrap/wtf.html' as wtf%} {% block content %}
-<div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
+<style>
+        body {
+            background-image: url(https://images.pexels.com/photos/3097112/pexels-photo-3097112.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+            background-repeat: no-repeat;
+            background-size: cover;
+            color:cyan;
+        }
+        *{
+        color: aliceblue;
+        }
+    </style>
+    {% extends 'base.html'%}
+    {% import 'bootstrap/wtf.html' as wtf%}
+    
+    {% block content %}
+    <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h3>Sign up</h3>
-                <h5>Fill in the form to Sign up</h5>
-                <hr> {{wtf.quick_form(registration_form)}}
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                {{wtf.quick_form(registration_form)}}
             </div>
+            <div class="col-md-2"></div>
         </div>
     </div>
-    <div class="col-md-3"></div>
-</div>
-
-{% endblock%} 
+    {% endblock%}

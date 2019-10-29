@@ -1,17 +1,20 @@
-import urllib.request,json
-from .models import Quote
+import urllib.request
+import json
+from .models import Quotes
+
 
 def get_quote():
-
-    with urllib.request.urlopen('http://quotes.stormconsultancy.co.uk/random.json') as url:
-        quote_details_data = url.read()
-        quote_details_response = json.loads(quote_details_data)
-
-        quote_object = None
-        if quote_details_response:
-            author = quote_details_response.get('author')
-            quote = quote_details_response.get('quote')
-
-            quote_object = Quote(author,quote)
-
-    return quote_object
+   '''
+   Function to get random quote
+   '''
+   quote_url = 'http://quotes.stormconsultancy.co.uk/random.json'
+   with urllib.request.urlopen(quote_url) as url:
+       quote_data = url.read()
+       quote_response = json.loads(quote_data)
+       quote_result = None
+       if quote_response:
+           author = quote_response.get('author')
+           quote = quote_response.get('quote')
+           permalink = quote_response.get('permalink')
+           quote_result = Quotes(author, quote, permalink)
+       return quote_result
