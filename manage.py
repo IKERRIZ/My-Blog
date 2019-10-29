@@ -7,7 +7,8 @@ from app.models import User,Comments,Blog,UpVote,DownVote,BlogCategory, Quote
 
 
 # Creating app instance
-app = create_app('development')
+
+app = create_app('production')
 
 manager = Manager(app)
 
